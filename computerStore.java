@@ -60,7 +60,16 @@ public class computerStore {
             if (citic.equals("3")) {
                 System.out.println("Введите минимальный размер ОЗУ: ");
                 int min3 = iScanner.nextInt();
-                System.out.println(SortComputerMemory(hashSet, min3));
+                System.out.println("Выводим возможные варианты: ");
+                hashSet = SortComputerMemory(hashSet, min3);
+                for (computer el : hashSet) {
+                    System.out.printf("%s - марка компьютера, %d грамм - вес компьютера, %d мм - длина диагонали, %d Гбайт - размер ОЗУ \n", el.marka, el.weight, el.size, el.memory);
+                    System.out.println("Доступные цвета: ");
+                    for (String col : el.color) {
+                        System.out.printf("%s \n", col);
+                    }
+                    System.out.println();
+                }
                 System.out.println("Введите цифру критерия: ");
             }
             citic = iScanner.nextLine();
@@ -101,7 +110,7 @@ public class computerStore {
     public static HashSet<computer> SortComputerWeight(HashSet<computer> hashSet, int minWeight) {
         HashSet<computer> hashsort = new HashSet<>();
         for (computer el : hashSet) {
-            if (el.weight <= minWeight) {
+            if (el.weight >= minWeight) {
                 hashsort.add(el);
             }
         }
@@ -111,7 +120,7 @@ public class computerStore {
     public static HashSet<computer> SortComputerSize(HashSet<computer> hashSet, int minSize) {
         HashSet<computer> hashsort = new HashSet<>();
         for (computer el : hashSet) {
-            if (el.weight <= minSize) {
+            if (el.weight >= minSize) {
                 hashsort.add(el);
             }
         }
@@ -121,7 +130,7 @@ public class computerStore {
     public static HashSet<computer> SortComputerMemory(HashSet<computer> hashSet, int minMemory) {
         HashSet<computer> hashsort = new HashSet<>();
         for (computer el : hashSet) {
-            if (el.weight <= minMemory) {
+            if (el.weight >= minMemory) {
                 hashsort.add(el);
             }
         }
